@@ -1,5 +1,5 @@
 import './globals.css'
-import { montserrat } from '@/fonts/fonts'
+import { montserrat } from '@/assets/fonts/fonts'
 
 export const metadata = {
   title: 'Staking Calculator',
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-Montserrat`}>{children}</body>
+      <body className={`${montserrat.variable} font-Montserrat mx-auto w-[75%]`}>{children}</body>
     </html>
   )
 }
