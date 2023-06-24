@@ -8,7 +8,7 @@ const SearchBar = () => {
       <div className='flex justify-center gap-2 bg-[#F3F3F3] w-[300px] md:w-full py-3 rounded'>
         <Image className='ml-[7px]' src={searchIcon} alt='Search Icon' width={13} height={13} />
         <input
-          className='w-full bg-[#F3F3F3] text-xs'
+          className='w-full bg-[#F3F3F3] text-xs outline-none'
           type="text"
           name="search"
           id=""
