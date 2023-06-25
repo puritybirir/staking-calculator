@@ -2,6 +2,7 @@
 
 import Cell from "@/components/Cell"
 import SearchBar from "@/components/SearchBar"
+import SheetsContainer from "@/components/SheetsContainer"
 import Table from "@/components/Table"
 import { RecoilRoot } from "recoil"
 
@@ -12,7 +13,7 @@ export default function Home() {
       <SearchBar />
       {/* <Table /> */}
       <RecoilRoot>
-        <Cell>Hello</Cell>
+        <SheetsContainer />
       </RecoilRoot>
     </main>
   )
