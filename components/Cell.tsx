@@ -7,17 +7,19 @@ import { cellContent } from './store/CellContentState';
 export const CELL_WIDTH = 100;
 export const CELL_HEIGHT = 25;
 
-interface CellProps { }
+interface CellProps {
+  cellId: string;
+}
 
 const Cell: FC<CellProps> = (props) => {
-  const [cellState, setCellState] = useRecoilState<string>(cellContent);
+  const [cellState, setCellState] = useRecoilState<string>(cellContent(props.cellId));
   const [isEditable, setIsEditable] = useState(false);
   const cellRef = useRef(null);
 
   const changeToInput = () => setIsEditable(true);
   const changeToText = () => setIsEditable(false);
   const onClickOutsideCell = (event: MouseEvent) => {
-    if ((event.target as HTMLElement)?.dataset?.cellId !== "2") {
+    if ((event.target as HTMLElement)?.dataset?.cellId !== props.cellId) {
       changeToText();
     }
   };
@@ -32,12 +34,12 @@ const Cell: FC<CellProps> = (props) => {
   return isEditable ? (
     <input
       ref={cellRef}
-      data-cell-id={"2"}
+      data-cell-id={props.cellId}
       value={cellState}
       onChange={updateCellContent}
     />
   ) : (
-    <div data-cell-id={"2"} onClick={changeToInput}>{cellState}</div>);
+    <div data-cell-id={props.cellId} onClick={changeToInput}>{cellState}</div>);
 };
 
 export default Cell;

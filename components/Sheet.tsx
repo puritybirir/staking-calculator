@@ -19,7 +19,7 @@ const Sheet: FC<SheetProps> = (props) => {
           <Row key={rowIndex}>
             {[...Array(columnsNum)].map((column, columnIndex) => (
               <Column key={columnIndex}>
-                <Cell />
+                <Cell cellId={`${rowIndex},${columnIndex}`} />
               </Column>
             ))}
           </Row>
