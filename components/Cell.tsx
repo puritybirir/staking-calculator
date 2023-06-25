@@ -4,7 +4,8 @@ import { ChangeEvent, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { atom, useRecoilState } from 'recoil';
 import { cellContent } from './store/CellContentState';
 
-
+export const CELL_WIDTH = 100;
+export const CELL_HEIGHT = 25;
 
 interface CellProps { }
 
