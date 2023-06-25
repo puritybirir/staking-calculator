@@ -6,9 +6,7 @@ import { cellContent } from './store/CellContentState';
 
 
 
-interface CellProps {
-  children: ReactNode;
-}
+interface CellProps { }
 
 const Cell: FC<CellProps> = (props) => {
   const [cellState, setCellState] = useRecoilState<string>(cellContent);
