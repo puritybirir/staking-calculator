@@ -33,7 +33,7 @@ const Cell: FC<CellProps> = (props) => {
 
   return isEditable ? (
     <input
-      className='w-full h-full'
+      className='w-full h-full border-none'
       ref={cellRef}
       data-cell-id={props.cellId}
       value={cellState}
@@ -41,7 +41,7 @@ const Cell: FC<CellProps> = (props) => {
     />
   ) : (
     <div
-      className='w-full h-full text-clip whitespace-nowrap overflow-auto'
+      className='w-full h-full text-clip whitespace-nowrap overflow-auto p-[2px] text-center'
       data-cell-id={props.cellId}
       onClick={changeToInput}>{cellState}
     </div>
