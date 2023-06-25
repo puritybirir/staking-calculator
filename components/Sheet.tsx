@@ -13,7 +13,7 @@ const Sheet: FC<SheetProps> = (props) => {
   const columnsNum = sheetSize.width / CELL_WIDTH;
   const rowsNum = sheetSize.height / CELL_HEIGHT;
   return (
-    <table>
+    <table className='border-spacing-0'>
       <tbody>
         {[...Array(rowsNum)].map((row, rowIndex) => (
           <Row key={rowIndex}>

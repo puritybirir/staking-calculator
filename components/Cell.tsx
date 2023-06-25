@@ -1,7 +1,7 @@
 "use client"
 
 import { ChangeEvent, FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { cellContent } from './store/CellContentState';
 
 export const CELL_WIDTH = 100;
@@ -33,13 +33,19 @@ const Cell: FC<CellProps> = (props) => {
 
   return isEditable ? (
     <input
+      className='w-full h-full'
       ref={cellRef}
       data-cell-id={props.cellId}
       value={cellState}
       onChange={updateCellContent}
     />
   ) : (
-    <div data-cell-id={props.cellId} onClick={changeToInput}>{cellState}</div>);
+    <div
+      className='w-full h-full text-clip whitespace-nowrap overflow-auto'
+      data-cell-id={props.cellId}
+      onClick={changeToInput}>{cellState}
+    </div>
+  );
 };
 
 export default Cell;

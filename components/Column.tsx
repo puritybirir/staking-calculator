@@ -5,7 +5,7 @@ interface ColumnProps {
 }
 
 const Column: FC<ColumnProps> = (props) => {
-  return <td>{props.children}</td>
+  return <td className='w-[100px] h-[25px] border max-w-[100px]'>{props.children}</td>
 }
 
 export default Column
