@@ -1,6 +1,6 @@
 "use client"
 
-import { ChangeEvent, FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, KeyboardEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { CellContentState } from './store/CellContentState';
 import { CalculateCellValue } from './store/CalculateCellValue';
@@ -20,15 +20,29 @@ const Cell: FC<CellProps> = (props) => {
     CalculateCellValue(props.cellId)
   );
   const [isEditable, setIsEditable] = useState(false);
-  const cellRef = useRef(null);
+  const cellRef = useRef<HTMLInputElement>(null);
 
-  const changeToInput = () => setIsEditable(true);
+  const changeToInput = () => {
+    setIsEditable(true);
+    setTimeout(() => {
+      cellRef.current?.focus();
+    })
+  };
+
   const changeToText = () => setIsEditable(false);
+
   const onClickOutsideCell = (event: MouseEvent) => {
     if ((event.target as HTMLElement)?.dataset?.cellId !== props.cellId) {
       changeToText();
     }
   };
+
+  const defocusInput = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setIsEditable(false);
+    }
+  }
+
   const updateCellContent = (event: ChangeEvent<HTMLInputElement>) =>
     setCellState(event.target.value);
 
@@ -44,12 +58,15 @@ const Cell: FC<CellProps> = (props) => {
       data-cell-id={props.cellId}
       value={cellState}
       onChange={updateCellContent}
+      onKeyDown={defocusInput}
     />
   ) : (
     <div
       className='w-full h-full text-clip whitespace-nowrap overflow-auto p-[2px] text-center'
       data-cell-id={props.cellId}
-      onClick={changeToInput}>{calculatedCellValue}
+      onClick={changeToInput}
+    >
+      {calculatedCellValue}
     </div>
   );
 };

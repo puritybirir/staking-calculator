@@ -19,7 +19,7 @@ export const CalculateCellValue = (cellId: string) =>
             );
 
             if (evaluatedExpression == "!ERROR") {
-              return "!ERROR";
+              throw new Error('!Error');
             }
 
             return evaluate(evaluatedExpression);

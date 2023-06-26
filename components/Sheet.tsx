@@ -23,9 +23,9 @@ const Sheet: FC<SheetProps> = (props) => {
           <Row>
             {[...Array(columnsNum + 1)].map((column, columnIndex) =>
               columnIndex !== 0 ? (
-                <AxisCell>{numToLetter(columnIndex - 1)}</AxisCell>
+                <AxisCell key={columnIndex}>{numToLetter(columnIndex - 1)}</AxisCell>
               ) : (
-                <AxisCell />
+                <AxisCell key={columnIndex} />
               )
             )}
           </Row>
