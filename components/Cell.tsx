@@ -4,6 +4,8 @@ import { ChangeEvent, FC, KeyboardEvent, ReactNode, useEffect, useRef, useState 
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { CellContentState } from './store/CellContentState';
 import { CalculateCellValue } from './store/CalculateCellValue';
+import Image from 'next/image';
+import pencil from '../assets/images/pencil.svg';
 
 export const CELL_WIDTH = 100;
 export const CELL_HEIGHT = 25;
@@ -53,7 +55,7 @@ const Cell: FC<CellProps> = (props) => {
 
   return isEditable ? (
     <input
-      className='w-full h-full border-none'
+      className='w-full h-[32px] border-none p-[8px] outline-none bg-[#FAFAFA] mt-1 border-r border-gray-200 rounded'
       ref={cellRef}
       data-cell-id={props.cellId}
       value={cellState}
@@ -61,12 +63,15 @@ const Cell: FC<CellProps> = (props) => {
       onKeyDown={defocusInput}
     />
   ) : (
-    <div
-      className='w-full h-full text-clip whitespace-nowrap overflow-auto p-[2px] text-center'
-      data-cell-id={props.cellId}
-      onClick={changeToInput}
-    >
-      {calculatedCellValue}
+    <div className='relative bg-[#FAFAFA] mt-1 border-r border-gray-200 rounded'>
+      <div
+        className='w-full h-[32px] text-clip whitespace-nowrap overflow-auto p-[8px] text-center relative'
+        data-cell-id={props.cellId}
+        onClick={changeToInput}
+      >
+        {calculatedCellValue}
+      </div>
+      <Image src={pencil} className="absolute right-1 bottom-1" alt="Pencil edit icon" />
     </div>
   );
 };

@@ -5,8 +5,8 @@ import AxisCell from './AxisCell';
 import Cell, { CELL_HEIGHT, CELL_WIDTH } from './Cell';
 import { SheetSizeState } from './store/SheetSizeState';
 import { useRecoilValue } from 'recoil';
-import Resizer from './Resizer';
-import { numToLetter } from '@/utils/numberToLetter';
+// import Resizer from './Resizer';
+// import { numToLetter } from '@/utils/numberToLetter';
 
 
 interface SheetProps { }
@@ -14,13 +14,20 @@ interface SheetProps { }
 const Sheet: FC<SheetProps> = (props) => {
 
   const sheetSize = useRecoilValue(SheetSizeState);
-  const columnsNum = Math.ceil(sheetSize.width / CELL_WIDTH);
+  const columnsNum = 3;
   const rowsNum = Math.ceil(sheetSize.height / CELL_HEIGHT);
   return (
-    <div className='relative w-fit'>
-      <table className='border-spacing-0'>
+    <div className='relative w-full'>
+      <table className='w-full mt-[14px]'>
+        <thead className="rounded">
+          <tr className="rounded w-full bg-[#EFEFEF] text-[11px]">
+            <th className="font-medium p-3 text-black">Price</th>
+            <th className="font-medium p-3 text-black">Reward Rate</th>
+            <th className="font-medium p-3 text-black">Annual Reward in $</th>
+          </tr>
+        </thead>
         <tbody>
-          <Row>
+          {/* <Row>
             {[...Array(columnsNum + 1)].map((column, columnIndex) =>
               columnIndex !== 0 ? (
                 <AxisCell key={columnIndex}>{numToLetter(columnIndex - 1)}</AxisCell>
@@ -28,10 +35,10 @@ const Sheet: FC<SheetProps> = (props) => {
                 <AxisCell key={columnIndex} />
               )
             )}
-          </Row>
+          </Row> */}
           {[...Array(rowsNum)].map((row, rowIndex) => (
             <Row key={rowIndex}>
-              <AxisCell>{rowIndex + 1}</AxisCell>
+              {/* <AxisCell>{rowIndex + 1}</AxisCell> */}
               {[...Array(columnsNum)].map((column, columnIndex) => (
                 <Column key={columnIndex}>
                   <Cell cellId={`${rowIndex},${columnIndex}`} />
@@ -41,7 +48,7 @@ const Sheet: FC<SheetProps> = (props) => {
           ))}
         </tbody>
       </table>
-      <Resizer />
+      {/* <Resizer /> */}
     </div>
   );
 };
