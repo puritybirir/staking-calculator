@@ -1,8 +1,9 @@
 "use client"
 
 import { ChangeEvent, FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { cellContent } from './store/CellContentState';
+import { CalculateCellValue } from './store/CalculateCellValue';
 
 export const CELL_WIDTH = 100;
 export const CELL_HEIGHT = 25;
@@ -13,6 +14,9 @@ interface CellProps {
 
 const Cell: FC<CellProps> = (props) => {
   const [cellState, setCellState] = useRecoilState<string>(cellContent(props.cellId));
+  const calculatedCellValue = useRecoilValue<string>(
+    CalculateCellValue(props.cellId)
+  );
   const [isEditable, setIsEditable] = useState(false);
   const cellRef = useRef(null);
 
@@ -43,7 +47,7 @@ const Cell: FC<CellProps> = (props) => {
     <div
       className='w-full h-full text-clip whitespace-nowrap overflow-auto p-[2px] text-center'
       data-cell-id={props.cellId}
-      onClick={changeToInput}>{cellState}
+      onClick={changeToInput}>{calculatedCellValue}
     </div>
   );
 };
