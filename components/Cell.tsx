@@ -2,7 +2,7 @@
 
 import { ChangeEvent, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { cellContent } from './store/CellContentState';
+import { CellContentState } from './store/CellContentState';
 import { CalculateCellValue } from './store/CalculateCellValue';
 
 export const CELL_WIDTH = 100;
@@ -13,7 +13,9 @@ interface CellProps {
 }
 
 const Cell: FC<CellProps> = (props) => {
-  const [cellState, setCellState] = useRecoilState<string>(cellContent(props.cellId));
+  const [cellState, setCellState] = useRecoilState<string>(
+    CellContentState(props.cellId)
+  );
   const calculatedCellValue = useRecoilValue<string>(
     CalculateCellValue(props.cellId)
   );
