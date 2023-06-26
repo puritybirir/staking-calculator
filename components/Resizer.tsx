@@ -2,9 +2,7 @@ import { FC, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import { SheetSizeState } from './store/SheetSizeState'
 
-interface ResizerProps {
-
-}
+interface ResizerProps { }
 
 const Resizer: FC<ResizerProps> = (props) => {
   const [sheetSize, setSheetSize] = useRecoilState(SheetSizeState);

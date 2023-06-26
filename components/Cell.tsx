@@ -65,7 +65,7 @@ const Cell: FC<CellProps> = (props) => {
   ) : (
     <div className='relative bg-[#FAFAFA] mt-1 border-r border-gray-200 rounded'>
       <div
-        className='w-full h-[32px] text-clip whitespace-nowrap overflow-auto p-[8px] text-center relative'
+        className='w-full h-[32px] text-clip whitespace-nowrap overflow-auto p-[8px] text-[14px] text-center relative'
         data-cell-id={props.cellId}
         onClick={changeToInput}
       >

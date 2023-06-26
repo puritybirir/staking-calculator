@@ -10,19 +10,32 @@ export const CalculateCellValue = (cellId: string) =>
       key: `evaluatedCell_${cellId}`,
       get: ({ get }) => {
         const value = get(CellContentState(cellId)) as string;
+        const columnCharacter = cellId.split("").pop();
+        const isFirstColumn = columnCharacter === '0';
+        const isSecondColumn = columnCharacter === '1';
+        const valueNum = Number(value);
+
+        if (isFirstColumn && valueNum !== 0) {
+          const formattedValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(valueNum);
+          return formattedValue;
+        }
+
+        if (isSecondColumn && valueNum !== 0) {
+          const formattedValue = new Intl.NumberFormat('en-US', { style: 'percent' }).format(valueNum / 100);
+          return formattedValue;
+        }
 
         if (value.startsWith("=")) {
           try {
-            const evaluatedExpression = getEquationFromState(
-              get,
-              value.slice(1)
-            );
+            const evaluatedExpression = getEquationFromState(get, value.slice(1));
 
-            if (evaluatedExpression == "!ERROR") {
+            if (evaluatedExpression === "!ERROR") {
               throw new Error('!Error');
             }
 
-            return evaluate(evaluatedExpression);
+            const result = evaluate(evaluatedExpression);
+            const formattedResult = new Intl.NumberFormat('en-US').format(result / 100);
+            return formattedResult;
           } catch {
             return value;
           }
