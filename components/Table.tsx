@@ -1,12 +1,12 @@
+"use client"
+
 import Image from "next/image";
 import pencil from '../assets/images/pencil.svg';
+import { use, useState } from "react";
 
 const Table = () => {
-  const data = [
-    ['A1', 'B1'],
-    ['A2', 'B2'],
-    ['A3', 'B3'],
-  ];
+  const [cell, setCell] = useState("")
+  const [cell2, setCell2] = useState("")
 
   return (
     <div className="container mt-[14px]">
@@ -19,39 +19,44 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
-            <tr key={index}>
-              <td className="">
-                <div className="flex items-center justify-start rounded hover:shadow">
-                  <input
-                    className="border-r outline-none border-[#F5F5F5] text-[11px] text-black text-center w-full bg-[#FAFAFA] mt-2 py-4"
-                    type="text"
-                    value={row[0]}
-                  />
-                  <Image src={pencil} className="ml-[-1rem] mt-[1rem]" alt="Pencil edit icon" />
-                </div>
-              </td>
-              <td className="">
-                <div className="flex items-center justify-start rounded hover:shadow">
-                  <input
-                    className="border-r outline-none border-[#F5F5F5] text-[11px] text-black text-center w-full bg-[#FAFAFA] mt-2 py-4"
-                    type="text"
-                    value={row[1]}
-                  />
-                  <Image src={pencil} className="ml-[-1rem] mt-[1rem]" alt="Pencil edit icon" />
-                </div>
-              </td>
-              <td className="">
-                <div className="flex items-center justify-start rounded hover:shadow">
-                  <input
-                    className="w-full outline-none text-[11px] text-black text-center bg-[#FAFAFA] mt-2 py-4"
-                    type="text"
-                  />
-                  <Image src={pencil} className="ml-[-1rem] mt-[1rem]" alt="Pencil edit icon" />
-                </div>
-              </td>
-            </tr>
-          ))}
+          <tr>
+            <td className="">
+              <div className="flex items-center justify-start rounded hover:shadow">
+                <input
+                  className="border-r outline-none border-[#F5F5F5] text-[11px] text-black text-center w-full bg-[#FAFAFA] mt-2 py-4"
+                  type="text"
+                  value={cell}
+                  onChange={(e) => {
+                    setCell(e.target.value)
+                  }}
+                />
+                <Image src={pencil} className="ml-[-1rem] mt-[1rem]" alt="Pencil edit icon" />
+              </div>
+            </td>
+            <td className="">
+              <div className="flex items-center justify-start rounded hover:shadow">
+                <input
+                  className="border-r outline-none border-[#F5F5F5] text-[11px] text-black text-center w-full bg-[#FAFAFA] mt-2 py-4"
+                  type="text"
+                  value={cell2}
+                  onChange={(e) => {
+                    setCell2(e.target.value)
+                  }}
+                />
+                <Image src={pencil} className="ml-[-1rem] mt-[1rem]" alt="Pencil edit icon" />
+              </div>
+            </td>
+            <td className="">
+              <div className="flex items-center justify-start rounded hover:shadow">
+                <input
+                  className="w-full outline-none text-[11px] text-black text-center bg-[#FAFAFA] mt-2 py-4"
+                  type="text"
+                />
+                <Image src={pencil} className="ml-[-1rem] mt-[1rem]" alt="Pencil edit icon" />
+              </div>
+            </td>
+          </tr>
+
         </tbody>
       </table>
     </div>
