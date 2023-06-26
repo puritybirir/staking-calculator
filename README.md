@@ -29,6 +29,10 @@ Navigate to [http://localhost:3000](http://localhost:3000) with your browser to 
 - Add a reward rate to the reward column eg 15 (This will be converted to percentage)
 - In the Annual reward section use a formula to evaluate eg =A1*B1
 
+## 📝  Project management
+
+- Kanban board with all completed and in progress features [here](https://github.com/users/puritybirir/projects/1/views/1)
+
 
 ## 🚀 Live Demo
 
