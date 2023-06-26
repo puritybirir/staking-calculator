@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📖 Staking-Calculator
+
+The Personal Staking Calculator is a useful tool designed to help individuals calculate potential earnings from staking their cryptocurrency assets.
 
 ## Getting Started
 
-First, run the development server:
+Clone the project by running this command on your terminal
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+`git clone git@github.com:puritybirir/staking-calculator.git`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once this is done run `npm install` to install the project dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Then run the development server: `npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Navigate to [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+To test out the features.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Add a price to the price column eg 1500 (This will be converted to dollars)
+- Add a reward rate to the reward column eg 15 (This will be converted to percentage)
+- In the Annual reward section use a formula to evaluate eg =A1*B1
