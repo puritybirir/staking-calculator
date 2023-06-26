@@ -1,12 +1,9 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import Column from './Column';
 import Row from './Row';
-import AxisCell from './AxisCell';
-import Cell, { CELL_HEIGHT, CELL_WIDTH } from './Cell';
+import Cell, { CELL_HEIGHT } from './Cell';
 import { SheetSizeState } from './store/SheetSizeState';
 import { useRecoilValue } from 'recoil';
-// import Resizer from './Resizer';
-// import { numToLetter } from '@/utils/numberToLetter';
 
 
 interface SheetProps { }
@@ -27,18 +24,8 @@ const Sheet: FC<SheetProps> = (props) => {
           </tr>
         </thead>
         <tbody>
-          {/* <Row>
-            {[...Array(columnsNum + 1)].map((column, columnIndex) =>
-              columnIndex !== 0 ? (
-                <AxisCell key={columnIndex}>{numToLetter(columnIndex - 1)}</AxisCell>
-              ) : (
-                <AxisCell key={columnIndex} />
-              )
-            )}
-          </Row> */}
           {[...Array(rowsNum)].map((row, rowIndex) => (
             <Row key={rowIndex}>
-              {/* <AxisCell>{rowIndex + 1}</AxisCell> */}
               {[...Array(columnsNum)].map((column, columnIndex) => (
                 <Column key={columnIndex}>
                   <Cell cellId={`${rowIndex},${columnIndex}`} />
@@ -48,7 +35,6 @@ const Sheet: FC<SheetProps> = (props) => {
           ))}
         </tbody>
       </table>
-      {/* <Resizer /> */}
     </div>
   );
 };
